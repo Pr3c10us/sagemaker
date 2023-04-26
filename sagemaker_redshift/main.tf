@@ -79,7 +79,7 @@ provider "aws" {
     role_arn = aws_iam_role.redshift_role.arn
     instance_type = var.instance_type
     subnet_id = var.subnet_id
-    security_group_ids = [
+    security_groups = [
       aws_security_group.redshift_sg.id,
       var.sagemaker_security_group_id
     ]
@@ -95,12 +95,13 @@ provider "aws" {
       ]
     }
   
+    
     # Set up authentication to Redshift API using the stored credentials
-    environment {
-      REDSHIFT_HOST = var.redshift_host
-      REDSHIFT_DATABASE = var.redshift_database
-      REDSHIFT_USER = data.aws_secretsmanager_secret.redshift_credentials.secret.username
-      REDSHIFT_PASSWORD = data.aws_secretsmanager_secret.redshift_credentials.secret.password
-    }
+    # environment {
+    #   REDSHIFT_HOST = var.redshift_host
+    #   REDSHIFT_DATABASE = var.redshift_database
+    #   REDSHIFT_USER = data.aws_secretsmanager_secret.redshift_credentials.secret.username
+    #   REDSHIFT_PASSWORD = data.aws_secretsmanager_secret.redshift_credentials.secret.password
+    # }
   }
   
