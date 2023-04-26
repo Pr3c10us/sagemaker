@@ -97,10 +97,10 @@ provider "aws" {
   
     # Set up authentication to Redshift API using the stored credentials
     environment {
-      "REDSHIFT_HOST" = var.redshift_host
-      "REDSHIFT_DATABASE" = var.redshift_database
-      "REDSHIFT_USER" = data.aws_secretsmanager_secret.redshift_credentials.secret.username
-      "REDSHIFT_PASSWORD" = data.aws_secretsmanager_secret.redshift_credentials.secret.password
+      REDSHIFT_HOST = var.redshift_host
+      REDSHIFT_DATABASE = var.redshift_database
+      REDSHIFT_USER = data.aws_secretsmanager_secret.redshift_credentials.secret.username
+      REDSHIFT_PASSWORD = data.aws_secretsmanager_secret.redshift_credentials.secret.password
     }
   }
   
